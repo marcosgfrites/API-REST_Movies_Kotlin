@@ -1,5 +1,6 @@
 package alkemy.movies.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.hibernate.annotations.SQLDelete
 import org.springframework.data.annotation.CreatedDate
@@ -31,9 +32,12 @@ class Character (
     var story_character: String = "Default Story",
 
     @CreatedDate
+    @Column(nullable = false, updatable = false)
+    @JsonIgnore
     var creation_date: LocalDate? = null,
 
     @LastModifiedDate
+    @JsonIgnore
     var modified_date: LocalDate? = null,
 
     @Column(nullable = false, name = "available", columnDefinition = "tinyint(1)")

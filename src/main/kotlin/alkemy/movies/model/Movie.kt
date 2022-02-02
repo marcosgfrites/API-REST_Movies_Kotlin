@@ -1,5 +1,6 @@
 package alkemy.movies.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.hibernate.annotations.SQLDelete
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
@@ -27,9 +28,12 @@ class Movie (
     var score_movie: Int = 0,
 
     @CreatedDate
+    @Column(nullable = false, updatable = false)
+    @JsonIgnore
     var creation_date: LocalDate? = null,
 
     @LastModifiedDate
+    @JsonIgnore
     var modified_date: LocalDate? = null,
 
     @ManyToOne
